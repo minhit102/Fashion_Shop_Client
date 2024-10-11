@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./Login.css";
+import loginImage from "../../assets/image/Login/img_login_page.png";
 const Login = () => {
   const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
@@ -69,7 +70,9 @@ const Login = () => {
           </div>
         </form>
       </div>
-      <div className="container-image"></div>
+      <div className="container-image">
+        <img src={loginImage} alt="Login Page" />
+      </div>
     </div>
   );
 };
