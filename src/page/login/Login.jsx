@@ -1,17 +1,30 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Login.css";
 import loginImage from "../../assets/image/Login/img_login_page.png";
+import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { login } from "../../services/user";
+import { notification } from "antd";
+import { setUser } from "../../features/userSlice";
+const _ = require("lodash");
+
 const Login = () => {
   const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-
-  const handSubmit = (e) => {
+  const user = useSelector((state) => state.user);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const handSubmit = async (e) => {
     e.preventDefault();
     setError("");
 
     if (phone === "" || password === "") {
       setError("Vui lòng nhập số điện thoại và mật khẩu.");
+      notification.error({
+        message: "Login Failed",
+        description: error,
+      });
       return;
     }
     if (phone.length !== 10) {
@@ -23,6 +36,13 @@ const Login = () => {
       return;
     }
     setError("");
+    try {
+      const response = await login({ emailOrPhone: phone, password });
+      console.log("res " + response.user);
+      console.log(response.status);
+      dispatch(setUser(response));
+      navigate("/");
+    } catch (e) {}
   };
 
   return (
