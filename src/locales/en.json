@@ -1,0 +1,10 @@
+{
+  "login": "Login",
+  "phone_number": "Phone Number",
+  "password": "Password",
+  "login_failed": "Login Failed",
+  "please_enter": "Please enter your phone number and password.",
+  "phone_length": "Phone number must be 10 digits.",
+  "password_length": "Password must be at least 8 characters.",
+  "remember_me": "Remember"
+}

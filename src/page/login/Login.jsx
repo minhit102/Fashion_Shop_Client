@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { login } from "../../services/user";
 import { notification } from "antd";
 import { setUser } from "../../features/userSlice";
+import { useTranslation } from "react-i18next"; // Import useTranslation
 const _ = require("lodash");
 
 const Login = () => {
@@ -15,24 +16,26 @@ const Login = () => {
   const user = useSelector((state) => state.user);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const { t } = useTranslation(); // Sử dụng useTranslation để lấy hàm t
+
   const handSubmit = async (e) => {
     e.preventDefault();
     setError("");
 
     if (phone === "" || password === "") {
-      setError("Vui lòng nhập số điện thoại và mật khẩu.");
+      setError(t("please_enter")); // Dịch thông báo lỗi
       notification.error({
-        message: "Login Failed",
+        message: t("login_failed"), // Dịch tiêu đề thông báo
         description: error,
       });
       return;
     }
     if (phone.length !== 10) {
-      setError("Số điện thoại phải có 10 chữ số");
+      setError(t("phone_length")); // Dịch thông báo lỗi
       return;
     }
     if (password.length < 8) {
-      setError("Mật khẩu phải có ít nhất 8 kí tự ");
+      setError(t("password_length")); // Dịch thông báo lỗi
       return;
     }
     setError("");
@@ -49,25 +52,25 @@ const Login = () => {
     <div className="container">
       <div className="container-login">
         <div className="title-Login">
-          <h2>Đăng Nhập</h2>
+          <h2>{t("login")}</h2> {/* Dịch tiêu đề */}
         </div>
         <form className="form-container" onSubmit={handSubmit}>
-          <lable className="container-lable">Số điện thoại</lable>
+          <label className="container-lable">{t("phone_number")}</label> {/* Dịch label */}
           <div className="container-input">
             <input
               className="input"
-              placeholder="Số điện thoại"
+              placeholder={t("phone_number")} // Dịch placeholder
               value={phone}
               onChange={(e) => {
                 setPhone(e.target.value);
               }}
             ></input>
           </div>
-          <lable className="container-lable">Mật khẩu </lable>
+          <label className="container-lable">{t("password")}</label> {/* Dịch label */}
           <div className="container-input">
             <input
               className="input"
-              placeholder="Mật khẩu"
+              placeholder={t("password")} // Dịch placeholder
               type="password"
               value={password}
               onChange={(e) => {
@@ -77,15 +80,15 @@ const Login = () => {
           </div>
           {error && <div className="error-message">{error}</div>}
 
-          <lable>
+          <label>
             <span>
               <input type="checkbox"></input>
             </span>
-            <span>Ghi nhớ</span>
-          </lable>
+            <span>{t("remember_me")}</span> {/* Dịch cho Ghi nhớ nếu cần */}
+          </label>
           <div className="container-button">
             <button className="button-login" type="submit">
-              Đăng nhập
+              {t("login")} {/* Dịch cho nút Đăng nhập */}
             </button>
           </div>
         </form>

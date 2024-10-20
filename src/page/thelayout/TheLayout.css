@@ -1,0 +1,8 @@
+.main-container{
+    display : flex ;
+}
+.container-header-content{
+    flex: 1;
+    height: 100vh;
+    background-color:white;
+}

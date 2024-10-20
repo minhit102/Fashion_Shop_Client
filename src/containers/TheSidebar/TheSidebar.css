@@ -1,0 +1,10 @@
+.sidebar {
+    background-color: #343a40;
+    color: white;
+    height: 100vh;
+  }
+  
+  .sidebar.open {
+    width: 17%;
+  }
+  
