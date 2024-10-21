@@ -1,12 +1,10 @@
-import React, { useState } from "react";
+import React  from "react";
 import { Link } from "react-router-dom"; 
 import "./TheSidebar.css"; 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHome } from '@fortawesome/free-solid-svg-icons';
+
 
 const TheSidebar = ({isShowNavbar}) => {
-  return (
-      
+  return (  
     <div className={`sidebar ${isShowNavbar ? "open" : ""}`}>
 
       <ul className="sidebar-menu">

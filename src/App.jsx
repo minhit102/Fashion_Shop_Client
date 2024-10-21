@@ -1,5 +1,7 @@
 import React, { Suspense } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+
 
 const loading = (
   <div className="pt-3 text-center">

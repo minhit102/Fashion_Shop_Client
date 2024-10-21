@@ -14,7 +14,7 @@ const TheLayout = (props) => {
 
   return (
     <div className="main-container">
-      <TheSidebar isShowNavbar={isShowNavbar} />
+      <TheSidebar isShowNavbar={isShowNavbar} toggleNavbar = {toggleNavbar} />
       <div className="container-header-content">
         <TheHeader toggleNavbar = {toggleNavbar}  />
         <div className="container_content">
